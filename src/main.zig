@@ -32,9 +32,9 @@ pub fn main() anyerror!void {
     const random_word = word_string[6 * word_index .. 6 * word_index + 5];
 
     var did_win: bool = false;
-    var guesses: u8 = 1;
-    while (guesses <= 6 and !did_win) {
-        try stdout.print(csi ++ "0K" ++ "{}. _____" ++ csi ++ "5D", .{guesses});
+    var guesses: u8 = 0;
+    while (guesses < 6 and !did_win) {
+        try stdout.print(csi ++ "0K" ++ "{}. _____" ++ csi ++ "5D", .{guesses + 1});
 
         const guess = try stdin.readUntilDelimiter(&buffer, '\n');
         if (!isLower(guess)) {
